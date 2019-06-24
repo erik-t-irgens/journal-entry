@@ -1,13 +1,12 @@
-import { pingPong } from './journal';
 import './styles.css';
-
+import {Entry} from './journal';
 $(document).ready(function() {
   $('#ping-pong-form').submit(function(event) {
     event.preventDefault();
-    var goal = $('#goal').val();
-    var output = pingPong(goal);
-    output.forEach(function(element) {
-      $('#solution').append("<li>" + element + "</li>");
-    });
+    var inputTitle = $('#titleEntry').val();
+    var inputBody = $('#bodyEntry').val();
+    $('#userOutput').append("<li>" + inputTitle +  inputBody + "</li>");
+    var userEntry = new Entry (inputTitle, inputBody);
+    userEntry.lettersCount();
   });
 });
